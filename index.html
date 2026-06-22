@@ -92,4 +92,146 @@
                         <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇮🇳</span> Tamil</button>
                         <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇰🇷</span> Korean</button>
                         <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇯🇵</span> Japanese</button>
-                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇨🇳</span> Chinese</button>
+                        <button class="flex items-center gap-3 text-left w-full hover:bg-gray-800/50 p-2 rounded transition text-sm"><span>🇮🇳</span> Hindi</button>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-r from-red-950/40 to-black p-4 rounded-xl border border-red-900/40 mb-6">
+                    <h4 class="text-yellow-500 font-black flex items-center gap-2 text-sm"><i class="fa-solid fa-bolt"></i> NO ADS MODE</h4>
+                    <p class="text-xs text-gray-400 mt-1 leading-relaxed">Stop YouTube trailer ads instantly by upgrading.</p>
+                    <button onclick="alert('LKR 299 Payment Gateway Opening...')" class="mt-3 w-full bg-red-600 py-2 rounded-lg font-bold text-xs hover:bg-red-700 transition">ACTIVATE - LKR 299</button>
+                </div>
+            </div>
+            <div id="admin-panel" class="hidden border-t border-gray-900 pt-4 mb-2">
+                <button class="w-full bg-emerald-600/10 text-emerald-400 border border-emerald-500/30 py-2.5 rounded-lg font-bold text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-user-shield text-sm"></i> ADMIN DASHBOARD
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="movie-player-screen" class="hidden bg-[#141414] min-h-screen px-4 md:px-16 py-6 animate-fade-in">
+        <button onclick="closeMoviePlayer()" class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white font-bold text-sm cursor-pointer transition">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </button>
+
+        <div class="max-w-5xl mx-auto flex flex-col gap-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-black mb-3 tracking-wide">SQUID GAME - FULL MOVIE</h2>
+                <div class="w-full aspect-video bg-black rounded-xl overflow-hidden border border-gray-800 shadow-2xl relative">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/oqxAJKy0R4A" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-900 pt-6">
+                <h3 class="text-lg font-bold text-gray-400 mb-3 uppercase tracking-wider"><i class="fa-solid fa-clapperboard text-red-500 mr-2"></i> Official Trailer</h3>
+                <div class="w-full md:w-2/3 aspect-video bg-gray-950 rounded-lg overflow-hidden border border-gray-900 shadow-lg">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/oqxAJKy0R4A" frameborder="0"></iframe>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-900 pt-6 pb-12">
+                <h3 class="text-lg font-bold text-gray-400 mb-4 uppercase tracking-wider"><i class="fa-solid fa-circle-info text-red-500 mr-2"></i> Cast & Official Streaming Links</h3>
+                
+                <div class="flex gap-6 overflow-x-auto no-scrollbar py-2 items-center">
+                    
+                    <div class="flex flex-col items-center gap-2 text-center min-w-[90px]">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Lee_Jung-jae_at_a_brand_event_in_October_2023_%282%29.jpg" class="w-16 h-16 rounded-full object-cover border-2 border-gray-700 shadow-md">
+                        <span class="text-xs font-medium text-gray-300">Lee Jung-jae</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-center min-w-[90px]">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Park_Hae-soo_in_Nov_2023.jpg" class="w-16 h-16 rounded-full object-cover border-2 border-gray-700 shadow-md">
+                        <span class="text-xs font-medium text-gray-300">Park Hae-soo</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-center min-w-[90px]">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Hoyeon_Jung_at_the_LACMA_Art%2BFilm_Gala_2021_%28cropped%29.jpg" class="w-16 h-16 rounded-full object-cover border-2 border-gray-700 shadow-md">
+                        <span class="text-xs font-medium text-gray-300">Hoyeon Jung</span>
+                    </div>
+
+                    <div class="h-12 w-[1px] bg-gray-800 min-w-[1px]"></div>
+
+                    <a href="https://www.netflix.com" target="_blank" class="flex items-center gap-3 bg-[#E50914] px-5 py-3 rounded-xl font-bold text-sm min-w-[160px] shadow-lg hover:bg-red-700 transition">
+                        <i class="fa-solid fa-play"></i> Watch on Netflix
+                    </a>
+
+                    <a href="https://www.primevideo.com" target="_blank" class="flex items-center gap-3 bg-[#1A242F] border border-blue-500/30 px-5 py-3 rounded-xl font-bold text-sm min-w-[180px] shadow-lg hover:bg-slate-800 transition">
+                        <i class="fa-solid fa-video text-blue-400"></i> Prime Video Link
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAG6fzjVWksXVawN58Y3co698", 
+            authDomain: "nextflix-db-5c782.firebaseapp.com",
+            projectId: "nextflix-db-5c782",
+            storageBucket: "nextflix-db-5c782.appspot.com",
+            messagingSenderId: "330584392048",
+            appId: "1:330584392048:web:3cc8b46f46c1987ba138e6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        
+        const OWNER_EMAIL = "netwiewofficial@gmail.com"; 
+
+        // Screen Navigation Functions
+        window.openMoviePlayer = function() {
+            document.getElementById('home-screen').classList.add('hidden');
+            document.getElementById('movie-player-screen').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.closeMoviePlayer = function() {
+            document.getElementById('movie-player-screen').classList.add('hidden');
+            document.getElementById('home-screen').classList.remove('hidden');
+        };
+
+        window.toggleSidebar = function() {
+            const sb = document.getElementById('settings-sidebar');
+            sb.classList.toggle('sidebar-closed');
+            sb.classList.toggle('sidebar-open');
+        };
+
+        window.toggleLanguageCategory = function() {
+            const content = document.getElementById('language-dropdown-content');
+            const chevron = document.getElementById('language-chevron');
+            content.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+        };
+
+        function enterHome(user) {
+            document.getElementById('landing-screen').classList.replace('block', 'hidden');
+            document.getElementById('home-screen').classList.replace('hidden', 'block');
+            
+            if(user && user.email === OWNER_EMAIL) {
+                document.getElementById('admin-panel').classList.remove('hidden');
+            }
+        }
+
+        window.validateSecureForm = async (e, form) => {
+            e.preventDefault();
+            const email = form.querySelector('input').value;
+            await addDoc(collection(db, "registered_users"), { email, time: new Date() });
+            enterHome({ email });
+        };
+
+        window.loginWithGoogle = async () => {
+            const res = await signInWithPopup(auth, new GoogleAuthProvider());
+            enterHome(res.user);
+        };
+
+        window.loginWithFacebook = async () => {
+            const res = await signInWithPopup(auth, new FacebookAuthProvider());
+            enterHome(res.user);
+        };
+    </script>
+</body>
+</html>
