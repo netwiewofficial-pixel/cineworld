@@ -3,548 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Clone - Cinematic</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Netflix Sri Lanka - Watch TV Shows Online, Watch Movies Online</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
         body {
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
+            background-color: #141414;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
-
-        /* --- 🎬 Cinematic Hero Section (සංශෝධිත කොටස) --- */
-        .hero-bg {
-            position: relative;
-            height: 100vh; /* මුළු screen එකම වැසෙන සේ */
-            /* ✅ චිත්‍රපට ශාලාවක ලස්සන Cinematic පින්තූරයක් background එකට දැම්මා */
-            background-image: url('https://images.unsplash.com/photo-1512070679279-8988d32161be?q=80&w=1920&auto=format&fit=crop');
-            background-position: center;
+        .netflix-bg {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.9) 100%), 
+                        url('https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c9-ba3f-4c88-85ba-6e240a1493c8/43e0d4a6-40db-46e3-8af3-bc79fa033288/LK-en-20240325-popsignuptwoweeks-perspective_alpha_website_large.jpg');
             background-size: cover;
-            border-bottom: 8px solid #232323;
-        }
-
-        /* පින්තූරය උඩින් අඳුරු ගතියක් (Overlay) එකතු කිරීමට */
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* අඳුරු බව 70% ක් */
-            z-index: 1;
-        }
-
-        header, .hero-content {
-            position: relative;
-            z-index: 10; /* පින්තූරයට උඩින් පෙනීමට */
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 5%;
-            align-items: center;
-        }
-
-        .logo {
-            color: #e50914;
-            font-size: 2.2rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .sign-in {
-            background-color: #e50914;
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        .hero-content {
-            text-align: center;
-            padding: 10vh 5% 0;
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-content h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-        }
-
-        /* Email Form (සාමාන්‍ය Mobile පෙනුම) */
-        .email-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 550px;
-        }
-
-        .email-form input {
-            width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #a0a0a0;
-            border-radius: 4px;
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            transition: border 0.2s;
-        }
-
-        .email-form input:focus {
-            border: 2px solid #fff;
-        }
-
-        .email-form button {
-            width: 100%;
-            background-color: #e50914;
-            color: white;
-            border: none;
-            padding: 16px 24px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: background 0.2s;
-        }
-
-        .email-form button:hover {
-            background-color: #c40812;
-        }
-
-        /* ✅ Social Icons Section - Email Form එකට වඩාත් සමීපව */
-        .social-container {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 550px;
-        }
-
-        .social-container p {
-            font-size: 0.95rem;
-            color: #ccc;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .social-logos {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.6rem;
-            text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .social-icon:hover {
-            transform: scale(1.15) translateY(-3px);
-        }
-
-        .social-icon.google:hover { background-color: #db4437; border-color: #db4437; }
-        .social-icon.facebook:hover { background-color: #1877f2; border-color: #1877f2; }
-        .social-icon.tiktok:hover { background-color: #010101; border-color: #ff0050; }
-        .social-icon.twitter:hover { background-color: #1da1f2; border-color: #1da1f2; }
-
-        .black-bg {
-            background-color: #000;
-            position: relative;
-            z-index: 5;
-        }
-
-        /* Trending Section */
-        .trending-section {
-            padding: 50px 5%;
-        }
-
-        .trending-section h2 {
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
-
-        .carousel {
-            display: flex;
-            gap: 40px;
-            overflow-x: auto;
-            padding-left: 25px;
-            padding-bottom: 25px;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-        }
-
-        .carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .card {
-            position: relative;
-            flex: 0 0 150px;
-            height: 220px;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-        
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .rank {
-            position: absolute;
-            bottom: -15px;
-            left: -35px;
-            font-size: 110px;
-            font-weight: 900;
-            color: black;
-            -webkit-text-stroke: 4px #8a8a8a;
-            text-shadow: 0 0 25px rgba(0,0,0,1);
-            z-index: 2;
-            user-select: none;
-        }
-
-        /* Grid Section */
-        .reasons-section {
-            padding: 50px 5%;
-        }
-
-        .reasons-section h2 {
-            margin-bottom: 25px;
-        }
-
-        .reasons-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .reason-card {
-            background: linear-gradient(135deg, #192247 0%, #000000 100%);
-            padding: 30px;
-            border-radius: 15px;
-            min-height: 160px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .reason-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-        }
-
-        .reason-card p {
-            color: #c7c7c7;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* FAQ Accordion */
-        .faq-section {
-            padding: 50px 5%;
-        }
-
-        .faq-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background-color: #2d2d2d;
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.3rem;
-            padding: 22px;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 22px;
-            background-color: #2d2d2d;
-        }
-
-        .faq-answer p {
-            padding-bottom: 22px;
-            color: #d4d4d4;
-            font-size: 1.05rem;
-            line-height: 1.5;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 300px; /* Adjust based on expected text length */
-        }
-
-        /* 💻 Computer (Desktop) සඳහා විශේෂ Responsive කොටස */
-        @media (min-width: 768px) {
-            .hero-content {
-                padding-top: 15vh;
-            }
-            .hero-content h1 { 
-                font-size: 4.2rem; 
-            }
-            .subtitle {
-                font-size: 1.6rem;
-            }
-            .email-form { 
-                flex-direction: row; 
-                max-width: 750px;
-                gap: 0;
-            }
-            .email-form input {
-                border-radius: 4px 0 0 4px;
-                padding: 22px;
-            }
-            .email-form button {
-                width: auto;
-                white-space: nowrap;
-                border-radius: 0 4px 4px 0;
-                padding: 22px 35px;
-                font-size: 1.5rem;
-            }
-            .social-container {
-                margin-top: 30px;
-                max-width: 750px;
-            }
-            .card { 
-                flex: 0 0 190px; 
-                height: 270px; 
-            }
-            .rank { 
-                font-size: 140px; 
-                bottom: -20px; 
-                left: -45px; 
-            }
-            .reasons-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .reasons-grid { 
-                grid-template-columns: repeat(4, 1fr); 
-            }
-            .card { 
-                flex: 0 0 210px; 
-                height: 300px; 
-            }
-            .rank {
-                font-size: 160px;
-            }
+            background-position: center;
         }
     </style>
 </head>
-<body>
+<body class="text-white select-none">
 
-    <div class="hero-bg">
-        <header>
-            <div class="logo">NETFLIX</div>
-            <a href="#" class="sign-in">Sign In</a>
-        </header>
+    <div class="netflix-bg h-[95vh] w-full flex flex-col justify-between px-6 md:px-24 py-6 relative">
+        <div class="flex justify-between items-center z-10">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="w-28 md:w-40">
+            <button class="bg-[#E50914] text-white px-4 py-1.5 rounded font-medium text-sm cursor-pointer hover:bg-red-700 transition">Sign In</button>
+        </div>
 
-        <main class="hero-content">
-            <h1>Unlimited movies, TV shows, and more</h1>
-            <p class="subtitle">Starts at USD 2.99. Cancel anytime.</p>
+        <div class="flex flex-col items-center text-center justify-center my-auto z-10 max-w-3xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-black mb-4">Unlimited movies, TV shows, and more</h1>
+            <p class="text-lg md:text-2xl font-normal mb-6">Watch anywhere. Cancel anytime.</p>
+            <p class="text-sm md:text-xl font-normal mb-4">Ready to watch? Enter your email to create or restart your membership.</p>
             
-            <form class="email-form" id="secureForm" onsubmit="validateSecureForm(event)">
-                <input type="email" id="userEmail" placeholder="Email address" required>
-                <button type="submit">Get Started ></button>
+            <form onsubmit="validateSecureForm(event, this)" class="flex flex-col md:flex-row gap-3 w-full max-w-xl px-4">
+                <input type="email" placeholder="Email address" required class="bg-black/50 border border-gray-500 rounded p-4 flex-grow text-white placeholder-gray-400 focus:outline-none focus:border-white">
+                <button type="submit" class="bg-[#E50914] text-white text-xl font-semibold py-3 px-6 rounded flex items-center justify-center gap-2 hover:bg-red-700 transition cursor-pointer">
+                    Get Started <span>&gt;</span>
+                </button>
             </form>
-
-            <div class="social-container">
-                <p>Or Sign In with official accounts</p>
-                <div class="social-logos">
-                    <a href="https://accounts.google.com" target="_blank" class="social-icon google" title="Google"><i class="fab fa-google"></i></a>
-                    <a href="https://www.facebook.com" target="_blank" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com" target="_blank" class="social-icon tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://twitter.com" target="_blank" class="social-icon twitter" title="Twitter / X"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </main>
+        </div>
     </div>
 
-    <div class="black-bg">
-        <section class="trending-section">
-            <h2>Trending Now</h2>
-            <div class="carousel">
-                <div class="card"><span class="rank">1</span><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=300&q=80" alt="Movie"></div>
-                <div class="card"><span class="rank">2</span><img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&w=300&q=80" alt="Movie"></div>
-                <div class="card"><span class="rank">3</span><img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=300&q=80" alt="Movie"></div>
-                <div class="card"><span class="rank">4</span><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=300&q=80" alt="Movie"></div>
-                <div class="card"><span class="rank">5</span><img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=300&q=80" alt="Movie"></div>
-                <div class="card"><span class="rank">6</span><img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&w=300&q=80" alt="Movie"></div>
-            </div>
-        </section>
+    <div class="h-2 bg-[#232323] w-full"></div>
 
-        <section class="reasons-section">
-            <h2>More Reasons to Join</h2>
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <h3>Enjoy on your TV</h3>
-                    <p>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, and more.</p>
-                </div>
-                <div class="reason-card">
-                    <h3>Download to watch offline</h3>
-                    <p>Save your favorites easily and always have something to watch.</p>
-                </div>
-                <div class="reason-card">
-                    <h3>Watch everywhere</h3>
-                    <p>Stream unlimited movies on your phone, tablet, laptop, and TV.</p>
-                </div>
-                <div class="reason-card">
-                    <h3>Create profiles for kids</h3>
-                    <p>Send kids on adventures with their favorite characters in a space made just for them.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            <ul class="faq-list">
-                <li class="faq-item">
-                    <button class="faq-question">What is Netflix? <span>+</span></button>
-                    <div class="faq-answer">
-                        <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more.</p>
-                    </div>
-                </li>
-                <li class="faq-item">
-                    <button class="faq-question">How much does Netflix cost? <span>+</span></button>
-                    <div class="faq-answer">
-                        <p>Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
+    <div class="bg-black py-16 px-6 md:px-24 text-center">
+        <div class="max-w-3xl mx-auto mb-10">
+            <p class="text-sm md:text-xl font-normal mb-4">Ready to watch? Enter your email to create or restart your membership.</p>
+            
+            <form onsubmit="validateSecureForm(event, this)" class="flex flex-col md:flex-row gap-3 w-full max-w-xl mx-auto px-4">
+                <input type="email" placeholder="Email address" required class="bg-black/50 border border-gray-500 rounded p-4 flex-grow text-white placeholder-gray-400 focus:outline-none focus:border-white">
+                <button type="submit" class="bg-[#E50914] text-white text-xl font-semibold py-3 px-6 rounded flex items-center justify-center gap-2 hover:bg-red-700 transition cursor-pointer">
+                    Get Started <span>&gt;</span>
+                </button>
+            </form>
+        </div>
+        <p class="text-gray-500 text-sm">Netflix Clone - Created for Educational Purposes</p>
     </div>
 
-    <script>
-        // FAQ Accordion JavaScript
-        document.addEventListener("DOMContentLoaded", () => {
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const questionBtn = item.querySelector('.faq-question');
-                questionBtn.addEventListener('click', () => {
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    item.classList.toggle('active');
-                });
-            });
-        });
 
-        // 🔐 Basic Security Validation (XSS සහ SQL Injection මූලිකව වැළැක්වීමට)
-        function validateSecureForm(event) {
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // ඔයාගේ Firebase Config එක (ස්ක්‍රීන්ෂොට් එකෙන් ගත්තේ)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAG6fzjVWksXVawN58Y3co698", 
+            authDomain: "nextflix-db-5c782.firebaseapp.com",
+            projectId: "nextflix-db-5c782",
+            storageBucket: "nextflix-db-5c782.appspot.com",
+            messagingSenderId: "330584392048",
+            appId: "1:330584392048:web:3cc8b46f46c1987ba138e6",
+            measurementId: "G-B4ZCNDXTS5"
+        };
+
+        // Firebase Initialization
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Form එක සබ්මිට් වෙද්දී ක්‍රියාත්මක වන පොදු Function එක
+        window.validateSecureForm = async function(event, formElement) {
             event.preventDefault();
-            const emailInput = document.getElementById('userEmail').value;
             
-            // ශක්තිමත් Email පරීක්ෂාව (Regex)
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            
-            if (!emailPattern.test(emailInput)) {
-                alert("Please enter a valid and secure email address.");
-                return false;
+            // ෆෝම් එක ඇතුළේ තියෙන Email එක ගන්නවා
+            const emailInput = formElement.querySelector('input[type="email"]');
+            const emailValue = emailInput.value;
+
+            try {
+                // Firebase Firestore එකට Data ඇතුළත් කිරීම
+                await addDoc(collection(db, "registered_users"), {
+                    email: emailValue,
+                    timestamp: new Date()
+                });
+                
+                alert("නියමයි! ඔයාගේ Email එක Firebase Database එකට සාර්ථකව සේව් වුණා! 🎉");
+                emailInput.value = ""; // කොටුව හිස් කරනවා
+            } catch (e) {
+                alert("අවුලක් වුණා: " + e.message);
             }
-
-            // කේතය ආරක්ෂිත නම් සාර්ථකව ඉදිරියට යයි
-            alert("Security Check Passed! Processing: " + emailInput);
-            // window.location.href = "nextpage.html"; // වෙන පිටුවකට යැවීමට
         }
-    </script><script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-  // ⚠️ මේ තියෙන්නේ ඔයා කොපි කරගත්තු කෝඩ් එක (firebaseConfig)
-  const firebaseConfig = {
-    apiKey: "AIzaSyAG6fzjVWksXVawN58Y3co698...", // ඔයා කොපි කරපු එකේ තියෙන සම්පූර්ණ එකම මෙතනට වැටෙන්න දෙන්න
-    authDomain: "nextflix-db-5c782.firebaseapp.com",
-    projectId: "nextflix-db-5c782",
-    storageBucket: "nextflix-db-5c782.appspot.com",
-    messagingSenderId: "330584392048",
-    appId: "1:330584392048:web:3cc8b46f46c1987ba138e6",
-    measurementId: "G-B4ZCNDXTS5"
-  };
-
-  // Firebase Init කිරීම
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Form එක සබ්මිට් වෙද්දී Firebase එකට Email එක යවන හැටි
-  window.validateSecureForm = async function(event) {
-    event.preventDefault();
-    const emailInput = document.getElementById('userEmail').value;
-
-    try {
-      // 'registered_users' කියන Collection එකට Email එක සහ වෙලාව සේව් කිරීම
-      await addDoc(collection(db, "registered_users"), {
-        email: emailInput,
-        timestamp: new Date()
-      });
-      
-      alert("නියමයි! ඔයාගේ Email එක Firebase Database එකට සාර්ථකව සේව් වුණා! 🎉");
-      document.getElementById('userEmail').value = ""; // කොටුව හිස් කිරීම
-    } catch (e) {
-      alert("අවුලක් වුණා: " + e.message);
-    }
-  }
     </script>
+
 </body>
 </html>
